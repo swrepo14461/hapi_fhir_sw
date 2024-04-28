@@ -1,5 +1,6 @@
 #Uncomment the following lines to enable the fhir endpoint to be available at /example/path/fhir instead of /fhir
-#server:
+server:
+  port: 8125
 #  servlet:
 #    context-path: /example/path
 #Adds the option to go to eg. http://localhost:8080/actuator/health for seeing the running configuration
@@ -46,6 +47,13 @@ spring:
 
   ###    These settings will enable fulltext search with lucene or elastic
       hibernate.search.enabled: true
+  security:
+    oauth2:
+      resourceserver:
+        opaque-token:
+          introspection-uri: https://account.gsilab.id/Account/Connect/introspect
+          client-id: opes
+          client-secret: oops
   ### lucene parameters
 #      hibernate.search.backend.type: lucene
 #      hibernate.search.backend.analysis.configurer: ca.uhn.fhir.jpa.search.HapiHSearchAnalysisConfigurers$HapiLuceneAnalysisConfigurer
